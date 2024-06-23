@@ -1,5 +1,3 @@
-Here's the revised and fixed version of your Markdown README file:
-
 # E-Commerce App
 
 A dynamic, responsive e-commerce platform built with React.js, Redux, and Tailwind CSS. The application is also a Progressive Web App (PWA).
