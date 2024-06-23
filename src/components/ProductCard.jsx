@@ -18,28 +18,27 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+    <div className="max-w-xs mx-auto bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full">
       <img className="w-full h-48 object-cover" src={product.image} alt={product.title} />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{product.title}</div>
-        <p className="text-gray-700 text-base mb-2">{product.description.substring(0, 100)}...</p>
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-gray-900 font-bold">${product.price}</span>
-          {isInCart ? (
-            <button
-              onClick={handleRemoveFromCart}
-              className="flex items-center bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 focus:outline-none"
-            >
-              <FiTrash className="text-xl mr-2" /> Remove
-            </button>
-          ) : (
-            <button
-              onClick={handleAddToCart}
-              className="flex items-center bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 focus:outline-none"
-            >
-              <FiShoppingCart className="text-xl mr-2" /> Add to Cart
-            </button>
-          )}
+      <div className="flex-grow p-4 flex flex-col justify-between">
+        <div>
+          <h3 className="text-gray-800 text-xl font-medium mb-2">{product.title}</h3>
+          <p className="text-gray-600 text-sm mb-4">{product.description.substring(0, 100)}...</p>
+        </div>
+        <div className="mt-auto flex justify-between items-center">
+          <span className="text-gray-800 font-bold">${product.price}</span>
+          <button
+            onClick={isInCart ? handleRemoveFromCart : handleAddToCart}
+            className={`flex items-center mt-2 ${
+              isInCart ? 'bg-red-500' : 'bg-blue-500'
+            } text-white px-4 py-2 rounded hover:bg-opacity-75 focus:outline-none`}
+          >
+            {isInCart ? (
+              <><FiTrash className="text-lg mr-2" /> Remove</>
+            ) : (
+              <><FiShoppingCart className="text-lg mr-2" /> Add to Cart</>
+            )}
+          </button>
         </div>
       </div>
     </div>
